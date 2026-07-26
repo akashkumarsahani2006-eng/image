@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Scoop Share — Image Sharing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-decor">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <span class="sprinkle sprinkle-1">🍦</span>
+    <span class="sprinkle sprinkle-2">🍧</span>
+    <span class="sprinkle sprinkle-3">🍨</span>
+    <span class="sprinkle sprinkle-4">🧁</span>
+    <span class="sprinkle sprinkle-5">🍫</span>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">🍦</span>
+      <span class="brand-name">Scoop Share</span>
+    </div>
+    <button id="themeToggle" class="icon-btn" title="Toggle theme" aria-label="Toggle theme">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </header>
+
+  <main class="container">
+
+    <!-- Upload Section -->
+    <section class="glass-card upload-card">
+      <div id="dropzone" class="dropzone">
+        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/gif,image/webp" multiple hidden />
+        <div class="dropzone-content">
+          <div class="dropzone-icon">🍨</div>
+          <p class="dropzone-title">Scoop your images in here</p>
+          <p class="dropzone-sub">drag &amp; drop, or click to browse — JPG, PNG, GIF, WEBP up to 20MB</p>
+        </div>
+      </div>
+
+      <div id="previewGrid" class="preview-grid hidden"></div>
+
+      <div id="uploadControls" class="upload-controls hidden">
+        <button id="clearBtn" class="btn btn-ghost">Clear</button>
+        <button id="uploadBtn" class="btn btn-primary">
+          <span id="uploadBtnText">Upload</span>
+        </button>
+      </div>
+
+      <div id="progressWrap" class="progress-wrap hidden">
+        <div class="progress-track">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <span id="progressLabel" class="progress-label">0%</span>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+      <div class="gallery-header">
+        <h2>The Parlor</h2>
+        <span id="imageCount" class="count-badge">0 scoops</span>
+      </div>
+
+      <div id="loadingState" class="state-block">
+        <div class="spinner"></div>
+        <p>Churning your gallery…</p>
+      </div>
+
+      <div id="emptyState" class="state-block hidden">
+        <div class="empty-illustration">🍦</div>
+        <p class="empty-title">The cone is empty</p>
+        <p class="empty-sub">Upload your first image to fill the parlor</p>
+      </div>
+
+      <div id="gallery" class="gallery-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- Fullscreen Viewer -->
+  <div id="viewerModal" class="modal-overlay hidden">
+    <button id="viewerClose" class="modal-close" aria-label="Close">✕</button>
+    <div class="viewer-inner">
+      <img id="viewerImage" src="" alt="Full size preview" />
+    </div>
+    <p class="viewer-hint">Click image to zoom · Esc to close</p>
+  </div>
+
+  <!-- Confirm Delete Modal -->
+  <div id="confirmModal" class="modal-overlay hidden">
+    <div class="confirm-box glass-card">
+      <h3>Delete image?</h3>
+      <p>This action cannot be undone.</p>
+      <div class="confirm-actions">
+        <button id="confirmCancel" class="btn btn-ghost">Cancel</button>
+        <button id="confirmDelete" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
